@@ -48,7 +48,7 @@ The script get_input_data.R is used to get all input files.
 4: chr1 29552 29553 chr1:16310:16607:clu_40980:ENSG00000227232.5  1.1117534   1.685548 -0.4241061 -0.014246458  
 5: chr1 29552 29553 chr1:17055:17233:clu_40981:ENSG00000227232.5  1.7357796   2.367227  0.6758256  0.156601906  
 
-3) sample attributes:
+3) sample attributes:  
    ```file = fread('GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt')```  
    ```file[1:5,1:9]```  
                              SAMPID SMATSSCR SMCENTER SMPTHNTS SMRIN  SMTS                        SMTSD SMUBRID SMTSISCH  
@@ -58,7 +58,7 @@ The script get_input_data.R is used to get all input files.
 4: GTEX-1117F-0011-R10a-SM-AHZ7F       NA   B1, A1             NA Brain Brain - Frontal Cortex (BA9) 0009834     1193  
 5: GTEX-1117F-0011-R10b-SM-CYKQ8       NA   B1, A1            7.2 Brain Brain - Frontal Cortex (BA9) 0009834     1193  
 
-4) APA event:
+4) APA event:  
    ```file = fread(unzip('Whole_Blood_All_PDUIs.zip', "Whole_Blood_All_PDUIs.txt"))```  
    ```file[1:5,1:10]```  
               Gene GTEX-111YS GTEX-1122O GTEX-1128S GTEX-113IC GTEX-113JC GTEX-117XS GTEX-117YW GTEX-1192W GTEX-1192X  
@@ -68,7 +68,7 @@ The script get_input_data.R is used to get all input files.
 4: NM_001294339       0.67       0.55       0.56       0.65       0.57       0.80       0.58       0.68       0.53  
 5:    NM_024602       1.00       1.00       1.00       1.00       1.00       1.00       0.99       1.00       1.00  
 
-5) demography variables:
+5) demography variables:  
    ```file = fread('sample_ga.txt')```  
    ```file[1:5,1:5]```  
           SUBJID            COHORT SEX AGE RACE  
