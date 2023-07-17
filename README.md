@@ -63,7 +63,7 @@ GTEX-1122O -32.551785 -12.059564 32.652657  6.593311   1.591776
 GTEX-1128S  16.218895  -3.304558 21.695663 34.882897 -16.463806  
 GTEX-113IC   5.248274  70.203751 25.648423 -6.454238  -5.834333  
 GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231  
-3)splicing: a matrix  
+3) splicing: a matrix  
    ```splicing[1:5,1:10]```  
      #Chr start   end              ID GTEX-1LVAO GTEX-1AX9K GTEX-1GN73    GTEX-RM2N GTEX-111YS GTEX-1R9PN  
 1 chr1 29552 29553 ENSG00000227232  1.5627810   1.617492  1.8133847  0.003239502  0.4766374  0.9620965  
@@ -71,15 +71,30 @@ GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231
 3 chr1 29552 29553 ENSG00000227232 -0.7163063  -2.124633  0.4795690 -0.005269084  1.7039249 -0.2537381  
 4 chr1 29552 29553 ENSG00000227232  1.1117534   1.685548 -0.4241061 -0.014246458 -1.8304159  0.1309287  
 5 chr1 29552 29553 ENSG00000227232  1.7357796   2.367227  0.6758256  0.156601906  0.2407400  1.1691889
-4)apa_pc_data: a matrix  
+4) apa_pc_data: a matrix  
    ```apa_pc_data[1:5,1:5]```
                     PC1      PC2        PC3        PC4         PC5  
 GTEX-111YS -3.162204 0.365157 -1.5807869 -1.2272305  1.69888839   
 GTEX-1122O -4.485739 2.712429  0.7774328  0.5957889 -0.01354537  
 GTEX-1128S  1.289923 1.588977  1.6681345  0.4693770  1.09205211  
 GTEX-113IC -6.401152 1.260727  2.8176932 -0.8861736 -0.31765179  
-GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172
-5)sam_demo: a matrix
+GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172  
+5) dummy.demo.info: a matrix  
+   ```dummy.demo.info[1:5,1:5]```
+              SEX AGE RACE.1 RACE.2 RACE.3  
+GTEX-1117F   1  66      0      1      0  
+GTEX-111CU   0  57      0      0      1  
+GTEX-111FC   0  61      0      0      1  
+GTEX-111VG   0  63      0      0      1  
+GTEX-111YS   0  62      0      0      1
+6) bmi: a matrix
+   ```bmi[1:5,]```
+                  SUBJID   BMI  
+GTEX-1117F GTEX-1117F 32.12  
+GTEX-111CU GTEX-111CU 33.57  
+GTEX-111FC GTEX-111FC 25.06  
+GTEX-111VG GTEX-111VG 29.53  
+GTEX-111YS GTEX-111YS 30.78  
 
 ### step2: construct prediction model
 MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model, get prediction and evaluate accuracy. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script get_input_file.R is used to realize above work, and functions.R saves some functions used in get_input_file.R
