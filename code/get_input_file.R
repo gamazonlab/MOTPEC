@@ -27,14 +27,15 @@ save(exp.matrix, file = exp.matrix.str)
 
 ### get partial whole blood profiles, including blood.pca, blood.tf.pca, modules_pca
 blood <- exp.matrix[["Whole_Blood"]]
-tf_path <- "MOTPEC/data/raw_data/TF.txt"
+tf_path <- "MOTPEC/data/raw_data/annotation/TF.txt"
 tf <- as.data.frame(fread(tf_path))
 blood.genes <- colnames(blood)
 blood.tfs <- intersect(blood.genes, tf[,2]) #全血转录因子
 blood.pca <- prcomp(blood)$x[ , c(1:10)]
 blood.tf.pca <- prcomp(blood[ , blood.tfs])$x[ , c(1:10)]
 
- ## do wgcna and get co-expression modules
+##next code: do wgcna and get co-expression modules; 
+#you can also use the co-expression modules that we provide in annotation/co_exp_modules, including: colors, modules, modules_pca
 powers = c(c(1:10), seq(from = 12, to=20, by=2))
 sft = pickSoftThreshold(blood, powerVector = powers, verbose = 5)
 sizeGrWindow(9, 5)
