@@ -27,7 +27,70 @@ input files include expression, genetics variants, splicing, APA event, transcri
 The script get_input_data.R is used to get all input files.
 
 ### examples of input file
+#### raw data
+1) normal expression:  
+   ```file = fread("Adipose_Subcutaneous.v8.normalized_expression.bed")```  
+   ```file[1:5, 1:10]```  
+       chr  start    end           gene_id  GTEX-1117F GTEX-111CU GTEX-111FC GTEX-111VG GTEX-111YS GTEX-1122O  
+1: chr1  29552  29553 ENSG00000227232.5  1.31353292 -0.9007945 -0.2926896 -0.7324114 -0.2747541 -0.6990255  
+2: chr1 135894 135895 ENSG00000268903.1 -0.39787592  0.5724601 -1.0918158  2.1157713  0.1035509  0.1295693  
+3: chr1 137964 137965 ENSG00000269981.1  0.06033348  0.9953057 -0.8440787  2.3148972  0.6187479  0.7045350  
+4: chr1 173861 173862 ENSG00000241860.6  0.22586574 -0.8197281 -0.2347111  1.0686590  0.2613606  1.1236339  
+5: chr1 195410 195411 ENSG00000279457.4  0.29268956 -1.0023984  0.4025419 -0.5422753 -1.7767986 -0.5522808  
+
+2) splicing:  
+   ```file = fread('Whole_Blood.v8.leafcutter_phenotypes.bed.gz')```  
+   ```file[1:5, 1:8]```  
+      #Chr start   end                                           ID GTEX-1LVAO GTEX-1AX9K GTEX-1GN73    GTEX-RM2N  
+1: chr1 29552 29553 chr1:14829:14970:clu_40978:ENSG00000227232.5  1.5627810   1.617492  1.8133847  0.003239502  
+2: chr1 29552 29553 chr1:15038:15796:clu_40978:ENSG00000227232.5 -1.3877237  -1.650869 -1.7964716 -0.004566534  
+3: chr1 29552 29553 chr1:15947:16607:clu_40980:ENSG00000227232.5 -0.7163063  -2.124633  0.4795690 -0.005269084  
+4: chr1 29552 29553 chr1:16310:16607:clu_40980:ENSG00000227232.5  1.1117534   1.685548 -0.4241061 -0.014246458  
+5: chr1 29552 29553 chr1:17055:17233:clu_40981:ENSG00000227232.5  1.7357796   2.367227  0.6758256  0.156601906  
+
+3) sample attributes:
+   ```file = fread('GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt')```  
+   ```file[1:5,1:9]```  
+                             SAMPID SMATSSCR SMCENTER SMPTHNTS SMRIN  SMTS                        SMTSD SMUBRID SMTSISCH  
+1:      GTEX-1117F-0003-SM-58Q7G       NA       B1             NA Blood                  Whole Blood 0013756     1188  
+2:      GTEX-1117F-0003-SM-5DWSB       NA       B1             NA Blood                  Whole Blood 0013756     1188  
+3:      GTEX-1117F-0003-SM-6WBT7       NA       B1             NA Blood                  Whole Blood 0013756     1188  
+4: GTEX-1117F-0011-R10a-SM-AHZ7F       NA   B1, A1             NA Brain Brain - Frontal Cortex (BA9) 0009834     1193  
+5: GTEX-1117F-0011-R10b-SM-CYKQ8       NA   B1, A1            7.2 Brain Brain - Frontal Cortex (BA9) 0009834     1193  
+
+4) APA event:
+   ```file = fread(unzip('Whole_Blood_All_PDUIs.zip', "Whole_Blood_All_PDUIs.txt"))```  
+   ```file[1:5,1:10]```  
+              Gene GTEX-111YS GTEX-1122O GTEX-1128S GTEX-113IC GTEX-113JC GTEX-117XS GTEX-117YW GTEX-1192W GTEX-1192X  
+1:    NM_020524       0.68       0.58       0.57       0.63       0.56       0.71       0.61       0.61       0.79  
+2:    NM_053282         NA         NA       0.40       0.53       0.40       0.39       0.43       0.34       0.53  
+3:    NM_020978       0.17       0.19       0.21       0.25       0.24         NA       0.46       0.32         NA  
+4: NM_001294339       0.67       0.55       0.56       0.65       0.57       0.80       0.58       0.68       0.53  
+5:    NM_024602       1.00       1.00       1.00       1.00       1.00       1.00       0.99       1.00       1.00  
+
+5) demography variables:
+   ```file = fread('sample_ga.txt')```  
+   ```file[1:5,1:5]```  
+          SUBJID            COHORT SEX AGE RACE  
+1: GTEX-1117F        Postmortem   2  66    2  
+2: GTEX-111CU Organ Donor (OPO)   1  57    3  
+3: GTEX-111FC        Postmortem   1  61    3  
+4: GTEX-111VG        Postmortem   1  63    3  
+5: GTEX-111YS Organ Donor (OPO)   1  62    3  
+
+6) BMI:  
+   ```file = fread('GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt')```  
+   ```file[1:5,1:10]```  
+          SUBJID            COHORT SEX AGE RACE ETHNCTY HGHT HGHTU WGHT WGHTU  
+1: GTEX-1117F        Postmortem   2  66    2       0   66    in  199    lb  
+2: GTEX-111CU Organ Donor (OPO)   1  57    3       0   70    in  234    lb  
+3: GTEX-111FC        Postmortem   1  61    3       0   73    in  190    lb  
+4: GTEX-111VG        Postmortem   1  63    3       0   69    in  200    lb  
+5: GTEX-111YS Organ Donor (OPO)   1  62    3       0   72    in  227    lb  
+
+#### data format after processing
 1) exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix  
+
    ```exp.matrix[['Whole_Blood']][1:5,1:5]```  
                ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981  
 GTEX-111YS      -1.2250236      -0.6733178       0.3014908       0.4171043       0.8916543  
@@ -36,34 +99,41 @@ GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377      
 GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683  
 GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617  
 2) WB: a list include: blood.pca, blood.tf.pca, colors, modules_pca, modules  
+
    ```WB[['blood.pca']][1:5,1:5]```  
                      PC1       PC2        PC3        PC4        PC5  
 GTEX-111YS  -68.56067  18.53914  -15.42782  -3.938970  20.411347  
 GTEX-1122O -102.96515 -51.41632   29.38948 -40.438315 -13.367777  
 GTEX-1128S   62.51361 -22.31329   27.41144 -65.461205  10.169594  
 GTEX-113IC   16.41480 -83.65493 -104.79319  -5.910071  -1.902242  
-GTEX-113JC   38.33161 -12.52743   60.43982  -9.061731   5.730263  
+GTEX-113JC   38.33161 -12.52743   60.43982  -9.061731   5.730263
+
    ```WB[['blood.tf.pca']][1:5,1:5]```  
                      PC1           PC2        PC3        PC4       PC5  
 GTEX-111YS  15.956726   8.756085788  -4.649753  -3.299114 -4.446283  
 GTEX-1122O  25.759200  -5.709656529  11.203563  -9.575776  1.353987  
 GTEX-1128S -15.255152  -7.904850477   1.738098 -14.940524 -5.970758  
 GTEX-113IC   9.744112 -36.092799242 -23.263840   2.306993  1.778211  
-GTEX-113JC  -9.658695  -0.004755886  12.989872  -2.667919 -2.465581  
+GTEX-113JC  -9.658695  -0.004755886  12.989872  -2.667919 -2.465581
+
    ```WB[['colors']][1:5]```  
    ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981   
-         "grey"          "grey"     "turquoise"     "turquoise"     "turquoise"   
+         "grey"          "grey"     "turquoise"     "turquoise"     "turquoise"
+   
    ```WB[['modules']][['grey']][1:5]```  
    ENSG00000227232 ENSG00000238009 ENSG00000241860 ENSG00000279928 ENSG00000279457   
-              1               2               7               8               9  
+              1               2               7               8               9
+   
    ```WB[['modules_pca']][['grey']][1:5,1:5]```  
                      PC1        PC2       PC3       PC4        PC5  
 GTEX-111YS -27.653046   3.697308 -8.865022  2.724629 -19.317787  
 GTEX-1122O -32.551785 -12.059564 32.652657  6.593311   1.591776  
 GTEX-1128S  16.218895  -3.304558 21.695663 34.882897 -16.463806  
 GTEX-113IC   5.248274  70.203751 25.648423 -6.454238  -5.834333  
-GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231  
+GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231
+
 3) splicing: a matrix  
+
    ```splicing[1:5,1:10]```  
      #Chr start   end              ID GTEX-1LVAO GTEX-1AX9K GTEX-1GN73    GTEX-RM2N GTEX-111YS GTEX-1R9PN  
 1 chr1 29552 29553 ENSG00000227232  1.5627810   1.617492  1.8133847  0.003239502  0.4766374  0.9620965  
@@ -71,23 +141,29 @@ GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231
 3 chr1 29552 29553 ENSG00000227232 -0.7163063  -2.124633  0.4795690 -0.005269084  1.7039249 -0.2537381  
 4 chr1 29552 29553 ENSG00000227232  1.1117534   1.685548 -0.4241061 -0.014246458 -1.8304159  0.1309287  
 5 chr1 29552 29553 ENSG00000227232  1.7357796   2.367227  0.6758256  0.156601906  0.2407400  1.1691889
-4) apa_pc_data: a matrix  
+
+4) apa_pc_data: a matrix
+   
    ```apa_pc_data[1:5,1:5]```
                     PC1      PC2        PC3        PC4         PC5  
 GTEX-111YS -3.162204 0.365157 -1.5807869 -1.2272305  1.69888839   
 GTEX-1122O -4.485739 2.712429  0.7774328  0.5957889 -0.01354537  
 GTEX-1128S  1.289923 1.588977  1.6681345  0.4693770  1.09205211  
 GTEX-113IC -6.401152 1.260727  2.8176932 -0.8861736 -0.31765179  
-GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172  
-5) dummy.demo.info: a matrix  
+GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172
+
+5) dummy.demo.info: a matrix
+   
    ```dummy.demo.info[1:5,1:5]```  
               SEX AGE RACE.1 RACE.2 RACE.3  
 GTEX-1117F   1  66      0      1      0  
 GTEX-111CU   0  57      0      0      1  
 GTEX-111FC   0  61      0      0      1  
 GTEX-111VG   0  63      0      0      1  
-GTEX-111YS   0  62      0      0      1  
-6) bmi: a matrix  
+GTEX-111YS   0  62      0      0      1
+
+6) bmi: a matrix
+    
    ```bmi[1:5,]```  
                   SUBJID   BMI  
 GTEX-1117F GTEX-1117F 32.12  
