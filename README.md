@@ -80,15 +80,15 @@ GTEX-1128S  1.289923 1.588977  1.6681345  0.4693770  1.09205211
 GTEX-113IC -6.401152 1.260727  2.8176932 -0.8861736 -0.31765179  
 GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172  
 5) dummy.demo.info: a matrix  
-   ```dummy.demo.info[1:5,1:5]```
+   ```dummy.demo.info[1:5,1:5]```  
               SEX AGE RACE.1 RACE.2 RACE.3  
 GTEX-1117F   1  66      0      1      0  
 GTEX-111CU   0  57      0      0      1  
 GTEX-111FC   0  61      0      0      1  
 GTEX-111VG   0  63      0      0      1  
-GTEX-111YS   0  62      0      0      1
-6) bmi: a matrix
-   ```bmi[1:5,]```
+GTEX-111YS   0  62      0      0      1  
+6) bmi: a matrix  
+   ```bmi[1:5,]```  
                   SUBJID   BMI  
 GTEX-1117F GTEX-1117F 32.12  
 GTEX-111CU GTEX-111CU 33.57  
