@@ -1,18 +1,18 @@
 # MOTPEC
-## a Multi-Omics-based framework bridges Transcriptome between PEripheral and Central tissues
+## A Multi-Omics-based framework bridges Transcriptome between PEripheral and Central tissues
 
 MOTPEC trains a prediction model using lasso regression based on peripheral blood profiles to predict the gene expression of central tissues. The peripheral blood profiles include expression, eSNP, splicing, APA event, co-expression module and transcriptional factors. For each gene in each tissue, MOTPEC predicts its tissue-specific expression.The pearson's r between observed expression and predicted expression is employed to evaluate the accuracy of model. Integrating TWAS, compare DGE of observed expression and predicted expression to estimate the utility of prediction model.
 
-## data availability
+## Data availability
 The data used in this study is freely available for download in the GTEx portal, https://www.gtexportal.org/
 
-## workdir
-workdir: ~/MOTPEC
-raw_data: ~/MOTPEC/data/raw_data
-input_data: ~/MOTPEC/data/input
-output_data: ~/MOTPEC/data/output
+## Workdir
+workdir: ~/MOTPEC  
+raw_data: ~/MOTPEC/data/raw_data  
+input_data: ~/MOTPEC/data/input  
+output_data: ~/MOTPEC/data/output  
 
-## main script
+## Main script
 Codes of MOTPEC are as followes:
 
 ### step1: get all input file
@@ -26,7 +26,7 @@ input files include expression, genetics variants, splicing, APA event, transcri
 7) other file: loci file gencode.v32.GRCh37.txt should be kept in ~/MOTPEC/data/iutput/
 The script get_input_data.R is used to get all input files.
 
-### examples of input file
+### Examples of input file
 #### raw data
 1) normal expression:  
    ```file = fread("Adipose_Subcutaneous.v8.normalized_expression.bed")```  
