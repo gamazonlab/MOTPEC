@@ -27,16 +27,50 @@ input files include expression, genetics variants, splicing, APA event, transcri
 The script get_input_data.R is used to get all input files.
 
 ### examples of input file
-1) exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix
-   > exp.matrix[['Whole_Blood']][1:5,1:5]
-           ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981
-GTEX-111YS      -1.2250236      -0.6733178       0.3014908       0.4171043       0.8916543
-GTEX-1122O      -0.8533908       0.1217088       0.8587798       0.3766841       0.3093189
-GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377       1.1788697
-GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683
-GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617
-2) WB: a list include
-
+1) exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix  
+   ```exp.matrix[['Whole_Blood']][1:5,1:5]```  
+               ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981  
+GTEX-111YS      -1.2250236      -0.6733178       0.3014908       0.4171043       0.8916543  
+GTEX-1122O      -0.8533908       0.1217088       0.8587798       0.3766841       0.3093189  
+GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377       1.1788697  
+GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683  
+GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617  
+2) WB: a list include: blood.pca, blood.tf.pca, colors, modules_pca, modules  
+   ```WB[['blood.pca']][1:5,1:5]```  
+                     PC1       PC2        PC3        PC4        PC5  
+GTEX-111YS  -68.56067  18.53914  -15.42782  -3.938970  20.411347  
+GTEX-1122O -102.96515 -51.41632   29.38948 -40.438315 -13.367777  
+GTEX-1128S   62.51361 -22.31329   27.41144 -65.461205  10.169594  
+GTEX-113IC   16.41480 -83.65493 -104.79319  -5.910071  -1.902242  
+GTEX-113JC   38.33161 -12.52743   60.43982  -9.061731   5.730263  
+   ```WB[['blood.tf.pca']][1:5,1:5]```  
+                     PC1           PC2        PC3        PC4       PC5  
+GTEX-111YS  15.956726   8.756085788  -4.649753  -3.299114 -4.446283  
+GTEX-1122O  25.759200  -5.709656529  11.203563  -9.575776  1.353987  
+GTEX-1128S -15.255152  -7.904850477   1.738098 -14.940524 -5.970758  
+GTEX-113IC   9.744112 -36.092799242 -23.263840   2.306993  1.778211  
+GTEX-113JC  -9.658695  -0.004755886  12.989872  -2.667919 -2.465581  
+   ```WB[['colors']][1:5]```  
+   ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981   
+         "grey"          "grey"     "turquoise"     "turquoise"     "turquoise"   
+   ```WB[['modules']][['grey']][1:5]```  
+   ENSG00000227232 ENSG00000238009 ENSG00000241860 ENSG00000279928 ENSG00000279457   
+              1               2               7               8               9  
+   ```WB[['modules_pca']][['grey']][1:5,1:5]```  
+                     PC1        PC2       PC3       PC4        PC5  
+GTEX-111YS -27.653046   3.697308 -8.865022  2.724629 -19.317787  
+GTEX-1122O -32.551785 -12.059564 32.652657  6.593311   1.591776  
+GTEX-1128S  16.218895  -3.304558 21.695663 34.882897 -16.463806  
+GTEX-113IC   5.248274  70.203751 25.648423 -6.454238  -5.834333  
+GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231  
+3)splicing: a matrix  
+   ```splicing[1:5,1:10]```  
+     #Chr start   end              ID GTEX-1LVAO GTEX-1AX9K GTEX-1GN73    GTEX-RM2N GTEX-111YS GTEX-1R9PN  
+1 chr1 29552 29553 ENSG00000227232  1.5627810   1.617492  1.8133847  0.003239502  0.4766374  0.9620965  
+2 chr1 29552 29553 ENSG00000227232 -1.3877237  -1.650869 -1.7964716 -0.004566534 -0.3512171 -0.8436864  
+3 chr1 29552 29553 ENSG00000227232 -0.7163063  -2.124633  0.4795690 -0.005269084  1.7039249 -0.2537381  
+4 chr1 29552 29553 ENSG00000227232  1.1117534   1.685548 -0.4241061 -0.014246458 -1.8304159  0.1309287  
+5 chr1 29552 29553 ENSG00000227232  1.7357796   2.367227  0.6758256  0.156601906  0.2407400  1.1691889  
 
 ### step2: construct prediction model
 MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model, get prediction and evaluate accuracy. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script get_input_file.R is used to realize above work, and functions.R saves some functions used in get_input_file.R
