@@ -17,8 +17,8 @@ Codes of MOTPEC are as followes:
 
 ###get all input file
 input files include expression, genetics variants, splicing, APA event, transcriptional factors list, demography variables, BMI phenotype. All these files should be kept in input. 
-1) expression: normal expression of 48 tissues should be kept in ~/MOTPEC/data/raw_data/normal_exp, and formatted expression data will be store in ~/MOTPEC/data/iutput/exp_matrix.Rdata
-2) partial whole blood profiles include blood.pca, blood.tf.pca, modules_pca. transcriptional factors list should be kept in ~/MOTPEC/data/raw_data/TF.txt, and formatted data will be stored in ~/MOTPEC/data/iutput/WB.Rdata
+1) expression: normal expression of 48 tissues should be kept in ~/MOTPEC/data/raw_data/normal_exp, and formatted expression data will be store in ~/MOTPEC/data/iutput/exp_matrix.Rdata 
+2) partial whole blood profiles include blood.pca, blood.tf.pca, modules_pca. Transcriptional factors list has been kept in ~/MOTPEC/data/raw_data/annotation/TF.txt, colors and modules have been kept in ~/MOTPEC/data/raw_data/annotation/co_exp_module.Rdata, and formatted data will be stored in ~/MOTPEC/data/iutput/WB.Rdata
 3) splicing: splicing file should be kept in ~/MOTPEC/data/raw_data/Whole_Blood.v8.leafcutter_phenotypes.bed.gz, and formatted data will be stored in ~/MOTPEC/data/iutput/splicing.Rdata
 4) APA event: apa event file should be kept in ~/MOTPEC/data/raw_data/Whole_Blood_All_PDUIs.zip, samples attributes should be kept in ~/MOTPEC/data/raw_data/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt, and formatted data will be stored in ~/MOTPEC/data/iutput/apa_pc_data.Rdata.
 5) demography variables: demography variables sample_ga.txt should be kept in ~/MOTPEC/data/raw_data/sample_ga.txt, and formatted data will be stored in ~/MOTPEC/data/iutput/sam_demo.Rdata
