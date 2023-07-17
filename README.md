@@ -173,7 +173,7 @@ GTEX-111VG GTEX-111VG 29.53
 GTEX-111YS GTEX-111YS 30.78  
 
 ### step2: construct prediction model
-MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model, get prediction and evaluate accuracy. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script prediction_model.R is used to realize above work, and functions.R saves some functions used in get_input_file.R
+MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model, get prediction and evaluate accuracy. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script prediction_model.R is used to realize above work, and functions.R saves some functions used in get_input_file.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.
 
 ### step3: format predicted results
 The script format_prediction.R will format the prediction model results, and pcc_2models, exp_pred, all_model_beta, sam_gene_time will be stored in ~/MOTPEC/data/output/
@@ -185,6 +185,7 @@ PrediXcan is employed to do TWAS in this study. The code is in folder do_TWAS. T
 A linear regression equation after confonding factors adjusted is used to estimate the association between expression and BMI. MOTPEC does this on observed expression, predicted expression and baseline expression respectively. The script do_DGE.R is used to realize above work, and DGE results will be stored in ~/MOTPEC/data/output/b_beta.Rdata
 
 ### step6: predict the tissue-specific expression
+The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us. Here, expression is necessary. Splicing, APA event, genetic variants are optional.
 
 ## Required Packages
 For the code the following R-packages needs to be installed 
