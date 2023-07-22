@@ -88,6 +88,16 @@ The script get_input_data.R is used to get all input files.
 4: GTEX-111VG        Postmortem   1  63    3       0   69    in  200    lb  
 5: GTEX-111YS Organ Donor (OPO)   1  62    3       0   72    in  227    lb  
 
+7) loci:  
+   ```loci <- read.csv('gencode.v32.GRCh37.txt', sep = '\t')```  
+   ```loci[1:5, 1:10]```  
+   chr  left right strand         geneid_full          geneid                           genetype     genename  
+1 chr1 11869 14409      + ENSG00000223972.5_2 ENSG00000223972 transcribed_unprocessed_pseudogene      DDX11L1  
+2 chr1 14404 29570      - ENSG00000227232.5_2 ENSG00000227232             unprocessed_pseudogene       WASH7P  
+3 chr1 29554 31109      + ENSG00000243485.5_6 ENSG00000243485                             lncRNA  MIR1302-2HG  
+4 chr1 34554 36081      - ENSG00000237613.2_3 ENSG00000237613                             lncRNA      FAM138A  
+5 chr1 52473 53312      + ENSG00000268020.3_4 ENSG00000268020             unprocessed_pseudogene       OR4G4P  
+
 #### data format after processing
 1) exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix  
 
