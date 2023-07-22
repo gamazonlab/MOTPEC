@@ -6,14 +6,14 @@ MOTPEC trains a prediction model using lasso regression based on peripheral bloo
 ## Data availability
 The data used in this study is freely available for download in the GTEx portal, https://www.gtexportal.org/
 
-## Workdir
+## Main script in experiment
+Codes of MOTPEC are as followes:
+
+### Workdir
 workdir: ~/MOTPEC  
 raw_data: ~/MOTPEC/data/raw_data  
 input_data: ~/MOTPEC/data/input  
-output_data: ~/MOTPEC/data/output  
-
-## Main script in experiment
-Codes of MOTPEC are as followes:
+output_data: ~/MOTPEC/data/output 
 
 ### step1: get all input file
 input files include expression, genetics variants, splicing, APA event, transcriptional factors list, demography variables, BMI phenotype. All these files should be kept in input. 
