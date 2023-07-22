@@ -195,7 +195,15 @@ PrediXcan is employed to do TWAS in this study. The code is in folder do_TWAS. T
 A linear regression equation after confonding factors adjusted is used to estimate the association between expression and BMI. MOTPEC does this on observed expression, predicted expression and baseline expression respectively. The script do_DGE.R is used to realize above work, and DGE results will be stored in ~/MOTPEC/data/output/b_beta.Rdata
 
 ## Tool: predict the tissue-specific expression
-The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us. Here, expression is necessary. Splicing, APA event, genetic variants are optional.
+The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us. Here, expression is necessary. Splicing, APA event, genetic variants and demography variables are optional. For example, if you have demography variables, you can set --demo_index T in command line. If genetic variants are required, you should install plink, and export the genetic variants of all samples to the working directory of plink in advance. Please set the input directory in advance and place the required files in the directory by get_input_File.R.  
+```--input_dir: the directory to place input files```
+```--output_dir: the directory to place input files```
+```--args: 1-48 represent 48 tissues```
+```--demo_index: whether add demography profiles```
+```--APA_index: whether add APA event profiles```
+```--eSNP_index: whether add genetic profiles```
+```--plink: the installed directory of plink```
+```--plink_wd: the working directory of plink```
 
 ## Required Packages
 For the code the following R-packages needs to be installed 
