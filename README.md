@@ -196,6 +196,18 @@ A linear regression equation after confonding factors adjusted is used to estima
 
 ## Tool: predict the tissue-specific expression
 The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us. Here, expression is necessary. Splicing, APA event, genetic variants and demography variables are optional. For example, if you have demography variables, you can set --demo_index T in command line. If genetic variants are required, you should install plink, and export the genetic variants of all samples to the working directory of plink in advance, and provide loci profile. If use splicing, please provide loci profile too. Other files refer to get_input_file.R. Please set the input directory in advance and place the required files in the directory by get_input_File.R.  
+  
+Here introduce the format of blood expression after processing:  
+```load(paste0(input_dir, '/blood_exp.Rdata'))```  
+```blood.exp[1:5,1:5]```  
+           ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981  
+GTEX-111YS      -1.2250236      -0.6733178       0.3014908       0.4171043       0.8916543  
+GTEX-1122O      -0.8533908       0.1217088       0.8587798       0.3766841       0.3093189  
+GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377       1.1788697  
+GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683  
+GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617  
+  
+Here are command aruments:  
 ```--input_dir: the directory to place input files```  
 ```--output_dir: the directory to place input files```  
 ```--args: 1-48 represent 48 tissues```  
