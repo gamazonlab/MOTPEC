@@ -12,7 +12,7 @@ raw_data: ~/MOTPEC/data/raw_data
 input_data: ~/MOTPEC/data/input  
 output_data: ~/MOTPEC/data/output  
 
-## Main script
+## Main script in experiment
 Codes of MOTPEC are as followes:
 
 ### step1: get all input file
@@ -194,7 +194,7 @@ PrediXcan is employed to do TWAS in this study. The code is in folder do_TWAS. T
 ### step5: do DGE
 A linear regression equation after confonding factors adjusted is used to estimate the association between expression and BMI. MOTPEC does this on observed expression, predicted expression and baseline expression respectively. The script do_DGE.R is used to realize above work, and DGE results will be stored in ~/MOTPEC/data/output/b_beta.Rdata
 
-### step6: predict the tissue-specific expression
+## Tool: predict the tissue-specific expression
 The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us. Here, expression is necessary. Splicing, APA event, genetic variants are optional.
 
 ## Required Packages
