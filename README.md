@@ -24,29 +24,29 @@ output_data: ~/MOTPEC/data/output
 
 ### step1: get all input file
 1. All these files should be kept in raw_data: ~/MOTPEC/data/raw_data:  
-- gene expression(normal)  
-  normal exp  
-- partial whole blood profiles  
-  blood.pca, blood.tf.pca, modules_pca  
-  colors and modules:  
-  annotation/co_exp_module.Rdata  
-- Transcriptional factors list  
-  annotation/TF.txt  
-- splicing  
-  Whole_Blood.v8.leafcutter_phenotypes.bed.gz  
-- APA event  
-  Whole_Blood_All_PDUIs.zip  
-- samples attributes  
-  GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt  
-- BMI phenotype  
-  GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt  
-- demography variables  
-  sample_ga.txt  
+  - gene expression(normal)  
+    normal exp  
+  - partial whole blood profiles  
+    blood.pca, blood.tf.pca, modules_pca  
+    colors and modules:  
+    annotation/co_exp_module.Rdata  
+  - Transcriptional factors list  
+    annotation/TF.txt  
+  - splicing  
+    Whole_Blood.v8.leafcutter_phenotypes.bed.gz  
+  - APA event  
+    Whole_Blood_All_PDUIs.zip  
+  - samples attributes  
+    GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt  
+  - BMI phenotype  
+    GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt  
+  - demography variables  
+    sample_ga.txt  
 2. The loci file gencode.v32.GRCh37.txt should be kept in ~/MOTPEC/data/input/
 3. The script get_input_data.R is used to get all formatted data, and data will be stored in "~/MOTPEC/data/input", for example:
 
 #### raw data
-1) normal expression:  
+- normal expression:  
    ```file = fread("Adipose_Subcutaneous.v8.normalized_expression.bed")```  
    ```file[1:5, 1:10]```  
        chr  start    end           gene_id  GTEX-1117F GTEX-111CU GTEX-111FC GTEX-111VG GTEX-111YS GTEX-1122O  
@@ -56,7 +56,7 @@ output_data: ~/MOTPEC/data/output
 4: chr1 173861 173862 ENSG00000241860.6  0.22586574 -0.8197281 -0.2347111  1.0686590  0.2613606  1.1236339  
 5: chr1 195410 195411 ENSG00000279457.4  0.29268956 -1.0023984  0.4025419 -0.5422753 -1.7767986 -0.5522808  
 
-2) splicing:  
+- splicing:  
    ```file = fread('Whole_Blood.v8.leafcutter_phenotypes.bed.gz')```  
    ```file[1:5, 1:8]```  
       #Chr start   end                                           ID GTEX-1LVAO GTEX-1AX9K GTEX-1GN73    GTEX-RM2N  
@@ -66,7 +66,7 @@ output_data: ~/MOTPEC/data/output
 4: chr1 29552 29553 chr1:16310:16607:clu_40980:ENSG00000227232.5  1.1117534   1.685548 -0.4241061 -0.014246458  
 5: chr1 29552 29553 chr1:17055:17233:clu_40981:ENSG00000227232.5  1.7357796   2.367227  0.6758256  0.156601906  
 
-3) sample attributes:  
+- sample attributes:  
    ```file = fread('GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt')```  
    ```file[1:5,1:9]```  
                              SAMPID SMATSSCR SMCENTER SMPTHNTS SMRIN  SMTS                        SMTSD SMUBRID SMTSISCH  
@@ -76,7 +76,7 @@ output_data: ~/MOTPEC/data/output
 4: GTEX-1117F-0011-R10a-SM-AHZ7F       NA   B1, A1             NA Brain Brain - Frontal Cortex (BA9) 0009834     1193  
 5: GTEX-1117F-0011-R10b-SM-CYKQ8       NA   B1, A1            7.2 Brain Brain - Frontal Cortex (BA9) 0009834     1193  
 
-4) APA event:  
+- APA event:  
    ```file = fread(unzip('Whole_Blood_All_PDUIs.zip', "Whole_Blood_All_PDUIs.txt"))```  
    ```file[1:5,1:10]```  
               Gene GTEX-111YS GTEX-1122O GTEX-1128S GTEX-113IC GTEX-113JC GTEX-117XS GTEX-117YW GTEX-1192W GTEX-1192X  
@@ -86,7 +86,7 @@ output_data: ~/MOTPEC/data/output
 4: NM_001294339       0.67       0.55       0.56       0.65       0.57       0.80       0.58       0.68       0.53  
 5:    NM_024602       1.00       1.00       1.00       1.00       1.00       1.00       0.99       1.00       1.00  
 
-5) demography variables:  
+- demography variables:  
    ```file = fread('sample_ga.txt')```  
    ```file[1:5,1:5]```  
           SUBJID            COHORT SEX AGE RACE  
@@ -96,7 +96,7 @@ output_data: ~/MOTPEC/data/output
 4: GTEX-111VG        Postmortem   1  63    3  
 5: GTEX-111YS Organ Donor (OPO)   1  62    3  
 
-6) BMI:  
+- BMI:  
    ```file = fread('GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt')```  
    ```file[1:5,1:10]```  
           SUBJID            COHORT SEX AGE RACE ETHNCTY HGHT HGHTU WGHT WGHTU  
@@ -106,7 +106,7 @@ output_data: ~/MOTPEC/data/output
 4: GTEX-111VG        Postmortem   1  63    3       0   69    in  200    lb  
 5: GTEX-111YS Organ Donor (OPO)   1  62    3       0   72    in  227    lb  
 
-7) loci:  
+- loci:  
    ```loci <- read.csv('gencode.v32.GRCh37.txt', sep = '\t')```  
    ```loci[1:5, 1:10]```  
    chr  left right strand         geneid_full          geneid                           genetype     genename  
@@ -117,7 +117,7 @@ output_data: ~/MOTPEC/data/output
 5 chr1 52473 53312      + ENSG00000268020.3_4 ENSG00000268020             unprocessed_pseudogene       OR4G4P  
 
 #### data format after processing
-1) exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix  
+- exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix  
 
    ```exp.matrix[['Whole_Blood']][1:5,1:5]```  
                ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981  
@@ -126,7 +126,7 @@ GTEX-1122O      -0.8533908       0.1217088       0.8587798       0.3766841      
 GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377       1.1788697  
 GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683  
 GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617  
-2) WB: a list include: blood.pca, blood.tf.pca, colors, modules_pca, modules  
+- WB: a list include: blood.pca, blood.tf.pca, colors, modules_pca, modules  
 
    ```WB[['blood.pca']][1:5,1:5]```  
                      PC1       PC2        PC3        PC4        PC5  
@@ -160,7 +160,7 @@ GTEX-1128S  16.218895  -3.304558 21.695663 34.882897 -16.463806
 GTEX-113IC   5.248274  70.203751 25.648423 -6.454238  -5.834333  
 GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231
 
-3) splicing: a matrix  
+- splicing: a matrix  
 
    ```splicing[1:5,1:10]```  
      #Chr start   end              ID GTEX-1LVAO GTEX-1AX9K GTEX-1GN73    GTEX-RM2N GTEX-111YS GTEX-1R9PN  
@@ -170,7 +170,7 @@ GTEX-113JC  16.836411 -36.001744 10.849349  4.437152  -3.455231
 4 chr1 29552 29553 ENSG00000227232  1.1117534   1.685548 -0.4241061 -0.014246458 -1.8304159  0.1309287  
 5 chr1 29552 29553 ENSG00000227232  1.7357796   2.367227  0.6758256  0.156601906  0.2407400  1.1691889
 
-4) apa_pc_data: a matrix
+- apa_pc_data: a matrix
    
    ```apa_pc_data[1:5,1:5]```
                     PC1      PC2        PC3        PC4         PC5  
@@ -180,7 +180,7 @@ GTEX-1128S  1.289923 1.588977  1.6681345  0.4693770  1.09205211
 GTEX-113IC -6.401152 1.260727  2.8176932 -0.8861736 -0.31765179  
 GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172
 
-5) dummy.demo.info: a matrix
+- dummy.demo.info: a matrix
    
    ```dummy.demo.info[1:5,1:5]```  
               SEX AGE RACE.1 RACE.2 RACE.3  
@@ -190,7 +190,7 @@ GTEX-111FC   0  61      0      0      1
 GTEX-111VG   0  63      0      0      1  
 GTEX-111YS   0  62      0      0      1
 
-6) bmi: a matrix
+- bmi: a matrix
     
    ```bmi[1:5,]```  
                   SUBJID   BMI  
