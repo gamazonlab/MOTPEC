@@ -45,7 +45,7 @@ output_data: ~/MOTPEC/data/output
 2. The loci file gencode.v32.GRCh37.txt should be kept in ~/MOTPEC/data/input/
 3. The script get_input_data.R is used to get all formatted data, and data will be stored in "~/MOTPEC/data/input", for example:
 
-####     raw data
+    #### raw data
 - normal expression:  
    ```file = fread("Adipose_Subcutaneous.v8.normalized_expression.bed")```  
    ```file[1:5, 1:10]```  
