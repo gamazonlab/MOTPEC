@@ -72,13 +72,15 @@ output_data: ~/MOTPEC/data/output
 
 - sample attributes:  
    ```file = fread('GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt')```  
-   ```file[1:5,1:9]```  
-                             SAMPID SMATSSCR SMCENTER SMPTHNTS SMRIN  SMTS                        SMTSD SMUBRID SMTSISCH  
-1:      GTEX-1117F-0003-SM-58Q7G       NA       B1             NA Blood                  Whole Blood 0013756     1188  
-2:      GTEX-1117F-0003-SM-5DWSB       NA       B1             NA Blood                  Whole Blood 0013756     1188  
-3:      GTEX-1117F-0003-SM-6WBT7       NA       B1             NA Blood                  Whole Blood 0013756     1188  
-4: GTEX-1117F-0011-R10a-SM-AHZ7F       NA   B1, A1             NA Brain Brain - Frontal Cortex (BA9) 0009834     1193  
-5: GTEX-1117F-0011-R10b-SM-CYKQ8       NA   B1, A1            7.2 Brain Brain - Frontal Cortex (BA9) 0009834     1193  
+   ```file[1:5,1:9]```
+  
+|    |  SAMPID  |  SMATSSCR  |  SMCENTER  |  SMPTHNTS  |  SMRIN  |  SMTS  |  SMTSD  |  SMUBRID  |  SMTSISCH  |
+|  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |
+|  1  |  GTEX-1117F-0003-SM-58Q7G  |  NA  |  B1  |    |  NA  |  Blood  |  Whole Blood  |  0013756  |  1188  |
+|  2  |  GTEX-1117F-0003-SM-5DWSB  |  NA  |  B1  |    |  NA  |  Blood  |  Whole Blood  |  0013756  |  1188  |
+|  3  |  GTEX-1117F-0003-SM-6WBT7  |  NA  |  B1  |    |  NA  |  Blood  |  Whole Blood  |  0013756  |  1188  |
+|  4  |  GTEX-1117F-0011-R10a-SM-AHZ7F  |  NA  |  B1, A1  |    |  NA  |  Brain  |  Brain - Frontal Cortex (BA9)  |  0009834  |  1193  |
+|  5  |  GTEX-1117F-0011-R10b-SM-CYKQ8  |  NA  |  B1, A1  |    |  7.2  |  Brain  |  Brain - Frontal Cortex (BA9)  |  0009834  |  1193  |
 
 - APA event:  
    ```file = fread(unzip('Whole_Blood_All_PDUIs.zip', "Whole_Blood_All_PDUIs.txt"))```  
