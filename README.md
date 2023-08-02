@@ -5,14 +5,14 @@ MOTPEC trains a prediction model using lasso regression based on peripheral bloo
 
 ## Data availability
 Download data files from GTEx Portal and GENCODE https://www.gencodegenes.org/human/  
--gene expression
--genetics variants
--splicing profiles
--APA events
--phenotype (BMI)
--demography variables
--transcriptional factors list
--loci file: gencode.v32.GRCh37.txt
+- gene expression
+- genetics variants
+- splicing profiles
+- APA events
+- phenotype (BMI)
+- demography variables
+- transcriptional factors list
+- loci file: gencode.v32.GRCh37.txt
 
 
 ## Main script in experiment
