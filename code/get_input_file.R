@@ -30,7 +30,7 @@ blood <- exp.matrix[["Whole_Blood"]]
 tf_path <- "MOTPEC/data/raw_data/annotation/TF.txt"
 tf <- as.data.frame(fread(tf_path))
 blood.genes <- colnames(blood)
-blood.tfs <- intersect(blood.genes, tf[,2]) #全血转录因子
+blood.tfs <- intersect(blood.genes, tf[,2]) #transcriptional factors of whole blood
 blood.pca <- prcomp(blood)$x[ , c(1:10)]
 blood.tf.pca <- prcomp(blood[ , blood.tfs])$x[ , c(1:10)]
 
