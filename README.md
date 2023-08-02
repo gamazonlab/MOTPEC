@@ -166,15 +166,15 @@ output_data: ~/MOTPEC/data/output
 
    ```WB[['colors']][1:5]```  
    
-   |  ENSG00000227232  |  ENSG00000238009  |  ENSG00000233750  |  ENSG00000268903  |  ENSG00000269981  |
-   |  ----  |  ----  |  ----  |  ----  |  ----  |
-   |  "grey"  |  "grey"  |  "turquoise"  |  "turquoise"  |  "turquoise"  |
+|  ENSG00000227232  |  ENSG00000238009  |  ENSG00000233750  |  ENSG00000268903  |  ENSG00000269981  |
+|  ----  |  ----  |  ----  |  ----  |  ----  |
+|  "grey"  |  "grey"  |  "turquoise"  |  "turquoise"  |  "turquoise"  |
    
    ```WB[['modules']][['grey']][1:5]```  
    
-   |  ENSG00000227232  |  ENSG00000238009  |  ENSG00000241860  |  ENSG00000279928  |  ENSG00000279457   |
-   |  ----  |  ----  |  ----  |  ----  |  ----  |
-   |  1  |  2  |  7  |  8  |  9  |
+|  ENSG00000227232  |  ENSG00000238009  |  ENSG00000241860  |  ENSG00000279928  |  ENSG00000279457   |
+|  ----  |  ----  |  ----  |  ----  |  ----  |
+|  1  |  2  |  7  |  8  |  9  |
    
    ```WB[['modules_pca']][['grey']][1:5,1:5]```  
    
@@ -223,8 +223,8 @@ output_data: ~/MOTPEC/data/output
 |  GTEX-111YS  |  0  |  62  |  0  |  0  |  1  |
 
 - bmi: a matrix
-    
-   ```bmi[1:5,]```  
+   ```bmi[1:5,]```
+  
 |    |  SUBJID  |  BMI  |
 |  ----  |  ----  |  ----  |
 |  GTEX-1117F  |  GTEX-1117F  |  32.12  |
