@@ -145,7 +145,7 @@ output_data: ~/MOTPEC/data/output
 
 - WB: a list include: blood.pca, blood.tf.pca, colors, modules_pca, modules  
 
-   ```WB[['blood.pca']][1:5,1:5]```
+ ```WB[['blood.pca']][1:5,1:5]```
   
 |    |  PC1  |  PC2  |  PC3  |  PC4  |  PC5  |
 |  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |
