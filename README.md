@@ -96,23 +96,27 @@ output_data: ~/MOTPEC/data/output
 
 - demography variables:  
    ```file = fread('sample_ga.txt')```  
-   ```file[1:5,1:5]```  
-          SUBJID            COHORT SEX AGE RACE  
-1: GTEX-1117F        Postmortem   2  66    2  
-2: GTEX-111CU Organ Donor (OPO)   1  57    3  
-3: GTEX-111FC        Postmortem   1  61    3  
-4: GTEX-111VG        Postmortem   1  63    3  
-5: GTEX-111YS Organ Donor (OPO)   1  62    3  
+   ```file[1:5,1:5]```
+  
+|    |  SUBJID  |  COHORT  |  SEX  |  AGE  |  RACE  |  
+| --- | ---- | ---- | ---- | ---- | ---- |
+|  1  |  GTEX-1117F  |  Postmortem  |  2  |  66  |  2  |
+|  2  |  GTEX-111CU  |  Organ Donor (OPO)  |  1  |  57  |  3  |
+|  3  |  GTEX-111FC  |  Postmortem  |  1  |  61  |  3  |
+|  4  |  GTEX-111VG  |  Postmortem  |  1  |  63  |  3  |
+|  5  |  GTEX-111YS  |  Organ Donor (OPO)  |  1  |  62  |  3  |
 
 - BMI:  
    ```file = fread('GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt')```  
-   ```file[1:5,1:10]```  
-          SUBJID            COHORT SEX AGE RACE ETHNCTY HGHT HGHTU WGHT WGHTU  
-1: GTEX-1117F        Postmortem   2  66    2       0   66    in  199    lb  
-2: GTEX-111CU Organ Donor (OPO)   1  57    3       0   70    in  234    lb  
-3: GTEX-111FC        Postmortem   1  61    3       0   73    in  190    lb  
-4: GTEX-111VG        Postmortem   1  63    3       0   69    in  200    lb  
-5: GTEX-111YS Organ Donor (OPO)   1  62    3       0   72    in  227    lb  
+   ```file[1:5,1:10]```
+  
+|    |  SUBJID  |  COHORT  |  SEX  |  AGE  |  RACE  |  ETHNCTY  |  HGHT  |  HGHTU  |  WGHT  |  WGHTU  |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+|  1  |  GTEX-1117F  |  Postmortem  |  2  |  66  |  2  |  0  |  66  |  in  |  199  |  lb  |
+|  2  |  GTEX-111CU  |  Organ Donor (OPO)  |  1  |  57  |  3  |  0  |  70  |  in  |  234  |  lb  |
+|  3  |  GTEX-111FC  |  Postmortem  |  1  |  61  |  3  |  0  |  73  |  in  |  190  |  lb  |
+|  4  |  GTEX-111VG  |  Postmortem  |  1  |  63  |  3  |  0  |  69  |  in  |  200  |  lb  |
+|  5  |  GTEX-111YS  |  Organ Donor (OPO)  |  1  |  62  |  3  |  0  |  72  |  in  |  227  |  lb  |
 
 - loci:  
    ```loci <- read.csv('gencode.v32.GRCh37.txt', sep = '\t')```  
