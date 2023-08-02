@@ -204,31 +204,34 @@ output_data: ~/MOTPEC/data/output
   
 |    |  PC1  |  PC2  |  PC3  |  PC4  |  PC5  |
 |  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |
-GTEX-111YS -3.162204 0.365157 -1.5807869 -1.2272305  1.69888839   
-GTEX-1122O -4.485739 2.712429  0.7774328  0.5957889 -0.01354537  
-GTEX-1128S  1.289923 1.588977  1.6681345  0.4693770  1.09205211  
-GTEX-113IC -6.401152 1.260727  2.8176932 -0.8861736 -0.31765179  
-GTEX-113JC  4.051234 2.184295  0.4758485 -0.8010198  0.58414172
+|  GTEX-111YS  |  -3.162204  |  0.365157  |  -1.5807869  |  -1.2272305  |  1.69888839   |
+|  GTEX-1122O  |  -4.485739  |  2.712429  |  0.7774328  |  0.5957889  |  -0.01354537  |
+|  GTEX-1128S  |   1.289923  |  1.588977  |  1.6681345  |  0.4693770  |  1.09205211  |
+|  GTEX-113IC  |  -6.401152  |  1.260727  |  2.8176932  |  -0.8861736  |  -0.31765179  | 
+|  GTEX-113JC  |  4.051234  |  2.184295  |  0.4758485  |  -0.8010198  |   0.58414172  |
 
 - dummy.demo.info: a matrix
    
-   ```dummy.demo.info[1:5,1:5]```  
-              SEX AGE RACE.1 RACE.2 RACE.3  
-GTEX-1117F   1  66      0      1      0  
-GTEX-111CU   0  57      0      0      1  
-GTEX-111FC   0  61      0      0      1  
-GTEX-111VG   0  63      0      0      1  
-GTEX-111YS   0  62      0      0      1
+   ```dummy.demo.info[1:5,1:5]```
+  
+|    |  SEX  |  AGE  |  RACE.1  |  RACE.2  |  RACE.3  |
+|  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |
+|  GTEX-1117F  |  1  |  66  |  0  |  1  |  0  |
+|  GTEX-111CU  |  0  |  57  |  0  |  0  |  1  |
+|  GTEX-111FC  |  0  |  61  |  0  |  0  |  1  |
+|  GTEX-111VG  |  0  |  63  |  0  |  0  |  1  |
+|  GTEX-111YS  |  0  |  62  |  0  |  0  |  1  |
 
 - bmi: a matrix
     
    ```bmi[1:5,]```  
-                  SUBJID   BMI  
-GTEX-1117F GTEX-1117F 32.12  
-GTEX-111CU GTEX-111CU 33.57  
-GTEX-111FC GTEX-111FC 25.06  
-GTEX-111VG GTEX-111VG 29.53  
-GTEX-111YS GTEX-111YS 30.78  
+|    |  SUBJID  |  BMI  |
+|  ----  |  ----  |  ----  |
+|  GTEX-1117F  |  GTEX-1117F  |  32.12  |
+|  GTEX-111CU  |  GTEX-111CU  |  33.57  |
+|  GTEX-111FC  |  GTEX-111FC  |  25.06  |
+|  GTEX-111VG  |  GTEX-111VG  |  29.53  |
+|  GTEX-111YS  |  GTEX-111YS  |  30.78  |
 
 ### step2: construct prediction model
 MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model, get prediction and evaluate accuracy. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script prediction_model.R is used to realize above work, and functions.R saves some functions used in get_input_file.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.
