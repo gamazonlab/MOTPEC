@@ -16,8 +16,6 @@ Download data files from GTEx Portal and GENCODE https://www.gencodegenes.org/hu
 
 
 ## Main script in experiment
-Codes of MOTPEC are as followes:
-
 ### Workdir
 workdir: ~/MOTPEC  
 raw_data: ~/MOTPEC/data/raw_data  
@@ -25,6 +23,31 @@ input_data: ~/MOTPEC/data/input
 output_data: ~/MOTPEC/data/output 
 
 ### step1: get all input file
+1. All these files should be kept in raw_data: ~/MOTPEC/data/raw_data:  
+   - gene expression(normal)
+     normal exp  
+   - partial whole blood profiles
+     blood.pca, blood.tf.pca, modules_pca  
+     colors and modules:  
+     annotation/co_exp_module.Rdata  
+   - Transcriptional factors list
+     annotation/TF.txt  
+   - splicing
+     Whole_Blood.v8.leafcutter_phenotypes.bed.gz  
+   - APA event
+     Whole_Blood_All_PDUIs.zip  
+   - samples attributes
+     GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt
+   - BMI phenotype
+     GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt
+   - demography variables
+     sample_ga.txt
+2. The loci file gencode.v32.GRCh37.txt should be kept in ~/MOTPEC/data/input/
+3. The script get_input_data.R is used to get all formatted data, and data will be stored in "~/MOTPEC/data/input", for example:
+
+
+
+
 input files include expression, genetics variants, splicing, APA event, transcriptional factors list, demography variables, BMI phenotype. All these files should be kept in input. 
 1) expression: normal expression of 48 tissues should be kept in ~/MOTPEC/data/raw_data/normal_exp, and formatted expression data will be store in ~/MOTPEC/data/input/exp_matrix.Rdata 
 2) partial whole blood profiles include blood.pca, blood.tf.pca, modules_pca. Transcriptional factors list has been kept in ~/MOTPEC/data/raw_data/annotation/TF.txt, colors and modules have been kept in ~/MOTPEC/data/raw_data/annotation/co_exp_module.Rdata, and formatted data will be stored in ~/MOTPEC/data/input/WB.Rdata
