@@ -233,8 +233,9 @@ output_data: ~/MOTPEC/data/output
 |  GTEX-111VG  |  GTEX-111VG  |  29.53  |
 |  GTEX-111YS  |  GTEX-111YS  |  30.78  |
 
-### step2: construct prediction model
-MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model, get prediction and evaluate accuracy. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script prediction_model.R is used to realize above work, and functions.R saves some functions used in get_input_file.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.
+### step2: Model building and accuracy evaluation
+MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model and get prediction. The prediction accuracy for each gene are
+evaluated using Pearson correlation test between the predicted expression and the ground truth. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script prediction_model.R is used to realize above work, and functions.R saves some functions used in get_input_file.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.
 
 ### step3: format predicted results
 The script format_prediction.R will format the prediction model results, and pcc_2models, exp_pred, all_model_beta, sam_gene_time will be stored in ~/MOTPEC/data/output/
