@@ -338,7 +338,7 @@ Here introduce the format of blood expression after processing:
 ```--plink_wd: the working directory of plink```  
 ```--plink_all_sam_name: file names of all exported sample genetic profiles```  
 ### Output
-For example, you will get such a file named by tissue name in output directory.
+For example, you will get such a file named by tissue name in output directory.  
 ```file = fread(paste0(output_dir, 'Artery_Aorta.txt'))```
 ```file[1:5, 1:5]```
 
