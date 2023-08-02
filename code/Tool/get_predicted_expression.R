@@ -18,7 +18,10 @@ option_list = list(
 )
 
 opt = parse_args(OptionParser(option_list=option_list))
+print('Your arguments are as followes:')
 print(opt)
+
+##get arguments
 input_dir = opt$input_dir
 output_dir = opt$output_dir
 demo_index = opt$demo_index
@@ -165,60 +168,66 @@ pc.co.tf.genes = intersect(colnames(co.blood.exp), row.names(blood.tf.pca.rotati
 blood.tf.pc <- (as.matrix(co.blood.exp[,pc.co.tf.genes]) %*% as.matrix(blood.tf.pca.rotation[pc.co.tf.genes,]))[,1:10]
 
 rs = foreach(i = 1:length(pred.genes), .combine = 'cbind') %dopar% {
-  print(i)
-  gene = pred.genes[i]
-  model.beta = tissue.beta[[gene]]
-  target.gene = as.matrix(co.blood.exp[, gene])
+  tryCatch({
+    print(paste0('Now we are predicting the No.', i, ' gene of ', tissue, '!'))
+    gene = pred.genes[i]
+    model.beta = tissue.beta[[gene]]
+    target.gene = as.matrix(co.blood.exp[, gene])
+    
+    #use module profiles we provide to calculate the module PCA
+    module <- co_exp_net_and_blood_pc[['colors']][[gene]] #module of gene
+    module.pca.rotation <- co_exp_net_and_blood_pc[['modules_pca']][[module]]
+    module.genes = names(co_exp_net_and_blood_pc[['modules']][[module]])
+    pc.co.module.genes = intersect(colnames(co.blood.exp), module.genes)
+    module.pca = (as.matrix(co.blood.exp[,pc.co.module.genes]) %*% as.matrix(module.pca.rotation[pc.co.module.genes,]))[,1:20]
+    
+    #NOTE: the order of input features is target.gene,dummy.demo.info[samples, ],apa.pc,blood.pc,blood.tf.pc,module.pca,local.snp,local.splice
+    #because the beta we provide is in this order, 
+    #if you use your beta, please make sure that features' order is same with beta
+    x = target.gene
+    if (demo_index){
+      x = cbind(x, as.matrix(dummy.demo.info[samples, ]))
+    } else{
+      x = cbind(x, matrix(data = 0, nrow = length(samples), ncol = 5))
+    }
+    
+    if (APA_index){
+      x = cbind(x, as.matrix(apa.pc))
+    } else{
+      apa.pc = matrix(data = 0, nrow = length(samples), ncol = 20)
+      x = cbind(x, apa.pc)
+    }
+    
+    x = cbind(x, blood.pc, blood.tf.pc, module.pca)
+    
+    if (eSNP_index){
+      local.snp <- getGeneSnpPCA(loci, gene, 10^6)
+      local.snp <- local.snp[samples, ]
+      x = cbind(x, local.snp)
+    } else{
+      local.snp = matrix(data = 0, nrow = length(samples), ncol = 20)
+      x = cbind(x, local.snp)
+    }
+    
+    if (splicing_index){
+      splice.matrix <- splicing[ , c(colnames(splicing)[1:4], samples)]
+      local.splice <- getGeneSplicePCA(loci, splice.matrix, gene, 10^5)
+      x = cbind(x, local.splice)
+    } else{
+      local.splice = matrix(data = 0, nrow = length(samples), ncol = (nrow(model.beta) - 86))
+      x = cbind(x, local.splice)
+    }
+    
+    y = as.matrix(x) %*% as.matrix(model.beta)
+    #if (dim(y)[1] != 200){y = data.frame(matrix(NA, nrow = 200))}
+    colnames(y) = gene
+    #row.names(y) = 1:length(samples)
+    return(y)
+  }, error = function(e){
+    #print(e)
+  })
   
-  #use module profiles we provide to calculate the module PCA
-  module <- co_exp_net_and_blood_pc[['colors']][[gene]] #module of gene
-  module.pca.rotation <- co_exp_net_and_blood_pc[['modules_pca']][[module]]
-  module.genes = names(co_exp_net_and_blood_pc[['modules']])
-  pc.co.module.genes = intersect(colnames(co.blood.exp), module.genes)
-  module.pca = (as.matrix(co.blood.exp[,pc.co.module.genes]) %*% as.matrix(module.pca.rotation[pc.co.module.genes,]))[,1:20]
-  
-  #NOTE: the order of input features is target.gene,dummy.demo.info[samples, ],apa.pc,blood.pc,blood.tf.pc,module.pca,local.snp,local.splice
-  #because the beta we provide is in this order, 
-  #if you use your beta, please make sure that features' order is same with beta
-  x = target.gene
-  if (demo_index){
-    x = cbind(x, as.matrix(dummy.demo.info[samples, ]))
-  } else{
-    x = cbind(x, matrix(data = 0, nrow = length(samples), ncol = 5))
-  }
-  
-  if (APA_index){
-    x = cbind(x, as.matrix(apa.pc))
-  } else{
-    apa.pc = matrix(data = 0, nrow = length(samples), ncol = 20)
-    x = cbind(x, apa.pc)
-  }
-  
-  x = cbind(x, blood.pc, blood.tf.pc, module.pca)
-  
-  if (eSNP_index){
-    local.snp <- getGeneSnpPCA(loci, gene, 10^6)
-    local.snp <- local.snp[samples, ]
-    x = cbind(x, local.snp)
-  } else{
-    local.snp = matrix(data = 0, nrow = length(samples), ncol = 20)
-    x = cbind(x, local.snp)
-  }
-  
-  if (splicing_index){
-    splice.matrix <- splicing[ , c(colnames(splicing)[1:4], samples)]
-    local.splice <- getGeneSplicePCA(loci, splice.matrix, gene, 10^5)
-    x = cbind(x, local.splice)
-  } else{
-    local.splice = matrix(data = 0, nrow = length(samples), ncol = (nrow(model.beta) - 86))
-    x = cbind(x, local.splice)
-  }
-  
-  y = as.data.frame(as.matrix(x) %*% as.matrix(model.beta))
-  colnames(y) = gene
-  #row.names(y) = 1:length(samples)
-  return(y)
 }
 
 write.table(rs, file = paste0(output_dir, '/', tissue, '.txt'), sep = '\t')
-print('OK')
+print('Predicting is OK!')
