@@ -235,29 +235,44 @@ output_data: ~/MOTPEC/data/output
 
 ### step2: Model building and accuracy evaluation
 MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model and get prediction. The prediction accuracy for each gene are
-evaluated using Pearson correlation test between the predicted expression and the ground truth. The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta. The script prediction_model.R is used to realize above work, and functions.R saves some functions used in get_input_file.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.
+evaluated using Pearson correlation test between the predicted expression and the ground truth.  
+The script prediction_model.R is used to realize above work, and functions.R saves some functions used in prediction_model.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.  
+The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta.  
 
-### step3: format predicted results
+### step3: Formatting predicted results
 The script format_prediction.R will format the prediction model results, and pcc_2models, exp_pred, all_model_beta, sam_gene_time will be stored in ~/MOTPEC/data/output/
 
-### step4: do TWAS
-PrediXcan is employed to do TWAS in this study. The code is in folder do_TWAS. The required data should be kept in ~/MOTPEC/data/raw_data/ beforehand. The TWAS results will be stored in ~/MOTPEC/data/output/twas_rs.
+### step4: Performing TWAS
+PrediXcan (https://www.nature.com/articles/ng.3367) is employed to do TWAS in this study.  
+The code is in folder do_TWAS.  
+The required data should be kept in ~/MOTPEC/data/raw_data/ beforehand.  
+The TWAS results will be stored in ~/MOTPEC/data/output/twas_rs.  
 
-### step5: do DGE
+### step5: Performing DGE
 A linear regression equation after confonding factors adjusted is used to estimate the association between expression and BMI. MOTPEC does this on observed expression, predicted expression and baseline expression respectively. The script do_DGE.R is used to realize above work, and DGE results will be stored in ~/MOTPEC/data/output/b_beta.Rdata
 
-## Tool: predict the tissue-specific expression
-The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us. Here, expression, all_model_beta.Rdata and co_exp_net_and_blood_pc.Rdata are necessary(The latter two will be provided by us, should be placed in input dir). Splicing, APA event, genetic variants and demography variables are optional. For example, if you have demography variables, you can set --demo_index T in command line. If genetic variants are required, you should install plink, and export the genetic variants of all samples to the working directory of plink in advance, and provide loci profile. If use splicing, please provide loci profile too. Other files refer to get_input_file.R. Please set the input directory in advance and place the required files in the directory by get_input_File.R.  
+## Tool: Predicting the tissue-specific expression of non-peripheral tissues
+The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us, which is executed by command line.
+### Input
+- necessary
+  1. Gene expression data (Note: expression matrix variable must be named "blood.exp" and be saved into "blood_exp.Rdata" and be placed into input dir!)
+  2. all_model_beta.Rdata (Provided by us: data/raw_data/annotation/all_model_beta.Rdata)
+  3. co_exp_net_and_blood_pc.Rdata (Provided by us: data/raw_data/annotation/co_exp_net_and_blood_pc.Rdata)
+
+- optional
+  Splicing, APA event, genetic variants and demography variables (refer to get_input_file.R).
   
 Here introduce the format of blood expression after processing:  
 ```load(paste0(input_dir, '/blood_exp.Rdata'))```  
 ```blood.exp[1:5,1:5]```  
-           ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981  
-GTEX-111YS      -1.2250236      -0.6733178       0.3014908       0.4171043       0.8916543  
-GTEX-1122O      -0.8533908       0.1217088       0.8587798       0.3766841       0.3093189  
-GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377       1.1788697  
-GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683  
-GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617  
+
+|    |  ENSG00000227232  |  ENSG00000238009  |  ENSG00000233750  |  ENSG00000268903  |  ENSG00000269981  |
+|  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |
+|  GTEX-111YS  |  -1.2250236  |  -0.6733178  |  0.3014908  |  0.4171043  |  0.8916543  |
+|  GTEX-1122O  |  -0.8533908  |  0.1217088  |  0.8587798  |  0.3766841  |  0.3093189  |
+|  GTEX-1128S  |   0.4293614  |  -0.6546895  |  -0.4375687  |  0.8163377  | 1.1788697  |
+|  GTEX-113IC  |   0.8533908  |  -1.1788697  |  -1.5580346  |  -2.6142683  |  -2.6142683  |  
+|  GTEX-113JC  |  -0.7064943  |  -0.8373702  |  -0.7702820  |  -0.9312701  |  -0.8215617  |
   
 Here are command aruments:  
 ```--input_dir: the directory to place input files```  
