@@ -255,9 +255,9 @@ A linear regression equation after confonding factors adjusted is used to estima
 The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us, which is executed by command line.
 ### Input
 - necessary
-  1. Gene expression data (Note: expression matrix variable must be named "blood.exp" and be saved into "blood_exp.Rdata" and be placed into input dir!)
-  2. all_model_beta.Rdata (Provided by us: data/raw_data/annotation/all_model_beta.Rdata)
-  3. co_exp_net_and_blood_pc.Rdata (Provided by us: data/raw_data/annotation/co_exp_net_and_blood_pc.Rdata)
+ 1. Gene expression data (Note: expression matrix variable must be named "blood.exp" and be saved into "blood_exp.Rdata" and be placed into input dir!)
+ 2. all_model_beta.Rdata (Provided by us: data/raw_data/annotation/all_model_beta.Rdata)
+ 3. co_exp_net_and_blood_pc.Rdata (Provided by us: data/raw_data/annotation/co_exp_net_and_blood_pc.Rdata)
 
 - optional
   Splicing, APA event, genetic variants and demography variables (refer to get_input_file.R).
@@ -274,10 +274,62 @@ Here introduce the format of blood expression after processing:
 |  GTEX-113IC  |   0.8533908  |  -1.1788697  |  -1.5580346  |  -2.6142683  |  -2.6142683  |  
 |  GTEX-113JC  |  -0.7064943  |  -0.8373702  |  -0.7702820  |  -0.9312701  |  -0.8215617  |
   
-Here are command aruments:  
+### Command aruments:  
 ```--input_dir: the directory to place input files```  
 ```--output_dir: the directory to place input files```  
 ```--args: 1-48 represent 48 tissues```  
+
+|  args  |  tissue  |
+|  ----  |  ----  |
+|  1  |  "Adipose_Subcutaneous"  |                 
+|  2  |  "Adipose_Visceral_Omentum"  |             
+|  3  |  "Adrenal_Gland"  |                        
+|  4  |  "Artery_Aorta"  |                         
+|  5  |  "Artery_Coronary"  |                      
+|  6  |  "Artery_Tibial"  |                        
+|  7  |  "Brain_Amygdala"  |                       
+|  8  |  "Brain_Anterior_cingulate_cortex_BA24"  | 
+|  9  |  "Brain_Caudate_basal_ganglia"  |          
+|  10  |  "Brain_Cerebellar_Hemisphere"  |          
+|  11  |  "Brain_Cerebellum"  |                     
+|  12  |  "Brain_Cortex"  |                         
+|  13  |  "Brain_Frontal_Cortex_BA9"  |             
+|  14  |  "Brain_Hippocampus"  |                    
+|  15  |  "Brain_Hypothalamus"  |                   
+|  16  |  "Brain_Nucleus_accumbens_basal_ganglia"  |
+|  17  |  "Brain_Putamen_basal_ganglia"  |          
+|  18  |  "Brain_Spinal_cord_cervical_c-1"  |       
+|  19  |  "Brain_Substantia_nigra"  |               
+|  20  |  "Breast_Mammary_Tissue"  |                
+|  21  |  "Cells_Cultured_fibroblasts"  |           
+|  22  |  "Cells_EBV-transformed_lymphocytes"  |    
+|  23  |  "Colon_Sigmoid"  |                        
+|  24  |  "Colon_Transverse"  |                     
+|  25  |  "Esophagus_Gastroesophageal_Junction"  |  
+|  26  |  "Esophagus_Mucosa"  |                     
+|  27  |  "Esophagus_Muscularis"  |                 
+|  28  |  "Heart_Atrial_Appendage"  |               
+|  29  |  "Heart_Left_Ventricle"  |                 
+|  30  |  "Kidney_Cortex"  |                        
+|  31  |  "Liver"  |                                
+|  32  |  "Lung"  |                                 
+|  33  |  "Minor_Salivary_Gland"  |                 
+|  34  |  "Muscle_Skeletal"  |                      
+|  35  |  "Nerve_Tibial"  |                         
+|  36  |  "Ovary"  |                                
+|  37  |  "Pancreas"  |                             
+|  38  |  "Pituitary"  |                            
+|  39  |  "Prostate"  |                             
+|  40  |  "Skin_Not_Sun_Exposed_Suprapubic"  |      
+|  41  |  "Skin_Sun_Exposed_Lower_leg"  |           
+|  42  |  "Small_Intestine_Terminal_Ileum"  |       
+|  43  |  "Spleen"  |                               
+|  44  |  "Stomach"  |                              
+|  45  |  "Testis"  |                               
+|  46  |  "Thyroid"  |                              
+|  47  |  "Uterus"  |                               
+|  48  |  "Vagina"  |      
+
 ```--demo_index: whether add demography profiles```  
 ```--APA_index: whether add APA event profiles```  
 ```--eSNP_index: whether add genetic profiles```  
