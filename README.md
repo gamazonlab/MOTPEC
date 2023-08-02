@@ -244,7 +244,7 @@ The script format_prediction.R will format the prediction model results, and pcc
 
 ### step4: Performing TWAS
 PrediXcan (https://www.nature.com/articles/ng.3367) is employed to do TWAS in this study.  
-The code is in folder do_TWAS.  
+The code is in folder do_TWAS(predixcan_r.r).  
 The required data should be kept in ~/MOTPEC/data/raw_data/ beforehand.  
 The TWAS results will be stored in ~/MOTPEC/data/output/twas_rs.  
 
@@ -276,7 +276,7 @@ Here introduce the format of blood expression after processing:
   
 ### Command aruments:  
 ```--input_dir: the directory to place input files```  
-```--output_dir: the directory to place input files```  
+```--output_dir: the directory to place output files```  
 ```--args: 1-48 represent 48 tissues```  
 
 |  args  |  tissue  |
@@ -330,10 +330,10 @@ Here introduce the format of blood expression after processing:
 |  47  |  "Uterus"  |                               
 |  48  |  "Vagina"  |      
 
-```--demo_index: whether add demography profiles```  
-```--APA_index: whether add APA event profiles```  
-```--eSNP_index: whether add genetic profiles```  
-```--splicing_index: whether add splicing profiles```  
+```--demo_index: whether add demography profiles, default F, while T represents add```  
+```--APA_index: whether add APA event profiles, default F, while T represents add```  
+```--eSNP_index: whether add genetic profiles, default F, while T represents add```  
+```--splicing_index: whether add splicing profiles, default F, while T represents add```  
 ```--plink: the installed directory of plink```  
 ```--plink_wd: the working directory of plink```  
 ```--plink_all_sam_name: file names of all exported sample genetic profiles```  
