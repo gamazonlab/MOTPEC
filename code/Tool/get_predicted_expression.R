@@ -74,7 +74,7 @@ if (splicing_index){
     gene.right <- as.numeric(loc.info[3])
     temp.loci <- loci[which(loci[,1] == gene.chr),]
     temp.loci <- temp.loci[which((temp.loci[,2] > gene.left) & (temp.loci[,3] < gene.right)),]
-    gene.scale <- temp.loci[,6] #在范围内的基因id
+    gene.scale <- temp.loci[,6] #gene id in scale
     
     splice.gene.ids <- names(table(splicing[,4]))
     gene.comm <- intersect(gene.scale, splice.gene.ids)
