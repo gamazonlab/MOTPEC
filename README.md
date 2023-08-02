@@ -24,24 +24,24 @@ output_data: ~/MOTPEC/data/output
 
 ### step1: get all input file
 1. All these files should be kept in raw_data: ~/MOTPEC/data/raw_data:  
-  - gene expression(normal)  
-    normal exp  
-  - partial whole blood profiles  
-    blood.pca, blood.tf.pca, modules_pca  
-    colors and modules:  
-    annotation/co_exp_module.Rdata  
-  - Transcriptional factors list  
-    annotation/TF.txt  
-  - splicing  
-    Whole_Blood.v8.leafcutter_phenotypes.bed.gz  
-  - APA event  
-    Whole_Blood_All_PDUIs.zip  
-  - samples attributes  
-    GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt  
-  - BMI phenotype  
-    GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt  
-  - demography variables  
-    sample_ga.txt  
+    - gene expression(normal)  
+      normal exp  
+    - partial whole blood profiles  
+      blood.pca, blood.tf.pca, modules_pca  
+      colors and modules:  
+      annotation/co_exp_module.Rdata  
+    - Transcriptional factors list  
+      annotation/TF.txt  
+    - splicing  
+      Whole_Blood.v8.leafcutter_phenotypes.bed.gz  
+    - APA event  
+      Whole_Blood_All_PDUIs.zip  
+    - samples attributes  
+      GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt  
+    - BMI phenotype  
+      GTEx_Analysis_2017-06-05_v8_Annotations_SubjectPhenotypesDS.txt  
+    - demography variables  
+      sample_ga.txt  
 2. The loci file gencode.v32.GRCh37.txt should be kept in ~/MOTPEC/data/input/
 3. The script get_input_data.R is used to get all formatted data, and data will be stored in "~/MOTPEC/data/input", for example:
 
