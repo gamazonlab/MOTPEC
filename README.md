@@ -120,27 +120,33 @@ output_data: ~/MOTPEC/data/output
 
 - loci:  
    ```loci <- read.csv('gencode.v32.GRCh37.txt', sep = '\t')```  
-   ```loci[1:5, 1:10]```  
-   chr  left right strand         geneid_full          geneid                           genetype     genename  
-1 chr1 11869 14409      + ENSG00000223972.5_2 ENSG00000223972 transcribed_unprocessed_pseudogene      DDX11L1  
-2 chr1 14404 29570      - ENSG00000227232.5_2 ENSG00000227232             unprocessed_pseudogene       WASH7P  
-3 chr1 29554 31109      + ENSG00000243485.5_6 ENSG00000243485                             lncRNA  MIR1302-2HG  
-4 chr1 34554 36081      - ENSG00000237613.2_3 ENSG00000237613                             lncRNA      FAM138A  
-5 chr1 52473 53312      + ENSG00000268020.3_4 ENSG00000268020             unprocessed_pseudogene       OR4G4P  
+   ```loci[1:5, 1:10]```
+  
+|    |  chr  |  left  |  right  |  strand  |  geneid_full  |  geneid  |  genetype  |  genename  |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+|  1  |  chr1  |  11869  |  14409  |  +  |  ENSG00000223972.5_2  |  ENSG00000223972  |  transcribed_unprocessed_pseudogene  |  DDX11L1  |
+|  2  |  chr1  |  14404  |  29570  |  -  |  ENSG00000227232.5_2  |  ENSG00000227232  |  unprocessed_pseudogene  |  WASH7P  |
+|  3  |  chr1  |  29554  |  31109  |  +  |  ENSG00000243485.5_6  |  ENSG00000243485  |  lncRNA  |  MIR1302-2HG  |
+|  4  |  chr1  |  34554  |  36081  |  -  |  ENSG00000237613.2_3  |  ENSG00000237613  |  lncRNA  |  FAM138A  |
+|  5  |  chr1  |  52473  |  53312  |  +  |  ENSG00000268020.3_4  |  ENSG00000268020  |  unprocessed_pseudogene  |  OR4G4P  |
 
-#### data format after processing
+  #### data format after processing
 - exp_matrix: a list of 49 tissues' expression(include Whole Blood), each element is a matrix  
 
-   ```exp.matrix[['Whole_Blood']][1:5,1:5]```  
-               ENSG00000227232 ENSG00000238009 ENSG00000233750 ENSG00000268903 ENSG00000269981  
-GTEX-111YS      -1.2250236      -0.6733178       0.3014908       0.4171043       0.8916543  
-GTEX-1122O      -0.8533908       0.1217088       0.8587798       0.3766841       0.3093189  
-GTEX-1128S       0.4293614      -0.6546895      -0.4375687       0.8163377       1.1788697  
-GTEX-113IC       0.8533908      -1.1788697      -1.5580346      -2.6142683      -2.6142683  
-GTEX-113JC      -0.7064943      -0.8373702      -0.7702820      -0.9312701      -0.8215617  
+   ```exp.matrix[['Whole_Blood']][1:5,1:5]```
+  
+|    |  ENSG00000227232  |  ENSG00000238009  |  ENSG00000233750  |  ENSG00000268903  |  ENSG00000269981  |
+|  ----  |  ----  |  ----  |  ----  |  ----  |  ----  |
+|  GTEX-111YS  |  -1.2250236  |  -0.6733178  |  0.3014908  |  0.4171043  |  0.8916543  |
+|  GTEX-1122O  |  -0.8533908  |  0.1217088  |  0.8587798  |  0.3766841  |  0.3093189  |
+|  GTEX-1128S  |  0.4293614  |  -0.6546895  |  -0.4375687  |  0.8163377  |  1.1788697  |
+|  GTEX-113IC  |  0.8533908  |  -1.1788697  |  -1.5580346  |  -2.6142683  |  -2.6142683  |
+|  GTEX-113JC  |  -0.7064943  |  -0.8373702   |  -0.7702820  |  -0.9312701  |  -0.8215617  |
+
 - WB: a list include: blood.pca, blood.tf.pca, colors, modules_pca, modules  
 
-   ```WB[['blood.pca']][1:5,1:5]```  
+   ```WB[['blood.pca']][1:5,1:5]```
+  
                      PC1       PC2        PC3        PC4        PC5  
 GTEX-111YS  -68.56067  18.53914  -15.42782  -3.938970  20.411347  
 GTEX-1122O -102.96515 -51.41632   29.38948 -40.438315 -13.367777  
