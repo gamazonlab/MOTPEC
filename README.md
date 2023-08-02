@@ -337,7 +337,22 @@ Here introduce the format of blood expression after processing:
 ```--plink: the installed directory of plink```  
 ```--plink_wd: the working directory of plink```  
 ```--plink_all_sam_name: file names of all exported sample genetic profiles```  
+### Output
+For example, you will get such a file named by tissue name in output directory.
+```file = fread(paste0(output_dir, 'Artery_Aorta.txt'))```
+```file[1:5, 1:5]```
 
-## Required Packages
+|  V1  |  ENSG00000228794  |  ENSG00000142599  |  ENSG00000171608  |  ENSG00000130940  |
+|  ----  |  ----  |  ----  |  ----  |  ----  |
+|  GTEX-PSDG  |  -0.035103603  |  -0.04837770  |  -0.13777566  |  0.0006240904  |
+|  GTEX-1S82Y  |  -0.169903070  |  0.08400447  |  0.08639159  |  -0.0617938968  |
+|  GTEX-1MCQQ  |  0.210433138  |  -0.03393886  |  -0.12010460  |  0.0914501497  |
+|  GTEX-1F75W  |  0.007376501  |  -0.37130859  |  -0.15527437  |  0.1009398230  |
+|  GTEX-WH7G  |  -0.042160986  |  0.31247051  |  0.14350070  |  -0.0519353176  |
+
+## Software and support
+### Required Packages
 For the code the following R-packages needs to be installed 
 data.table, WGCNA, readr, ggplot2, glmnet, caret, foreach, doMC
+### TWAS Tool
+Predixcan(https://www.nature.com/articles/ng.3367, https://github.com/gamazonlab/MR-JTI/blob/master/model_training/predixcan/)
