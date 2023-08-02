@@ -4,7 +4,16 @@
 MOTPEC trains a prediction model using lasso regression based on peripheral blood profiles to predict the gene expression of central tissues. The peripheral blood profiles include expression, eSNP, splicing, APA event, co-expression module and transcriptional factors. For each gene in each tissue, MOTPEC predicts its tissue-specific expression.The pearson's r between observed expression and predicted expression is employed to evaluate the accuracy of model. Integrating TWAS, compare DGE of observed expression and predicted expression to estimate the utility of prediction model.
 
 ## Data availability
-The data used in this study is freely available for download in the GTEx portal, https://www.gtexportal.org/
+Download data files from GTEx Portal and GENCODE https://www.gencodegenes.org/human/  
+-gene expression
+-genetics variants
+-splicing profiles
+-APA events
+-phenotype (BMI)
+-demography variables
+-transcriptional factors list
+-loci file: gencode.v32.GRCh37.txt
+
 
 ## Main script in experiment
 Codes of MOTPEC are as followes:
