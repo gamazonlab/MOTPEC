@@ -334,8 +334,8 @@ Here introduce the format of blood expression after processing:
 ```--APA_index: whether add APA event profiles, default F, while T represents add```  
 ```--eSNP_index: whether add genetic profiles, default F, while T represents add```  
 ```--splicing_index: whether add splicing profiles, default F, while T represents add```  
-```--plink: the installed directory of plink```  
-```--plink_wd: the working directory of plink```  
+```--plink: the installed directory of plink, the version of which is 1.9```  
+```--plink_wd: the working directory of plink, only support bed,fam,bim format, not support bgen```  
 ```--plink_all_sam_name: file names of all exported sample genetic profiles```  
 ### Output
 For example, you will get such a file named by tissue name in output directory.  
