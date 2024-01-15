@@ -1,7 +1,7 @@
 # MOTPEC
 ## A Multi-Omics-based framework bridges Transcriptome between PEripheral and Central tissues
 
-MOTPEC trains a prediction model using lasso regression based on peripheral blood profiles to predict the gene expression of central tissues. The peripheral blood profiles include expression, eSNP, splicing, APA event, co-expression module and transcriptional factors. For each gene in each tissue, MOTPEC predicts its tissue-specific expression.The pearson's r between observed expression and predicted expression is employed to evaluate the accuracy of model. Integrating TWAS, compare DGE of observed expression and predicted expression to estimate the utility of prediction model.
+MOTPEC trains a prediction model using lasso based on peripheral blood features to predict the gene expression in central tissues. The blood features include expression, eSNP, splicing, APA event, co-expression module and transcriptional factors. For each gene in each tissue, MOTPEC predicts its tissue-specific expression. The pearson's r between observed expression and predicted expression is calculated to evaluate the accuracy of the model. Integrating TWAS, we compare differential gene expression (DGE) from observed expression and predicted expression to estimate the utility of the model.
 
 ## Data availability
 Download data files from GTEx Portal and GENCODE https://www.gencodegenes.org/human/  
@@ -235,9 +235,8 @@ output_data: ~/MOTPEC/data/output
 |  GTEX-1111S  |  GTEX-111YS  |  30.78  |
 
 ### step2: Model building and accuracy evaluation
-MOTPEC uses Lasso regression model under a 5-fold cross-validation to train prediction model and get prediction. The prediction accuracy for each gene are
-evaluated using Pearson correlation test between the predicted expression and the ground truth.  
-The script prediction_model.R is used to realize above work, and functions.R saves some functions used in prediction_model.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.  
+MOTPEC uses Lasso under 5-fold cross-validation to train a prediction model and obtain prediction. The prediction accuracy for each gene is evaluated using Pearson correlation between the predicted expression and the ground truth.  
+The script prediction_model.R is used to realize the above pipeline, and functions.R stores some functions used in prediction_model.R. In prediction_model.R, gene expression is required. Splicing, APA event and genetic variants are optional.  
 The results will be saved in ~/MOTPEC/data/output/prediction_model_rs/ by tissue, including baseline accuracy, MOTPEC's accuracy, MOTPEC's prediction, MOTPEC's beta.  
 
 ### step3: Formatting predicted results
@@ -250,10 +249,10 @@ The required data should be kept in ~/MOTPEC/data/raw_data/ beforehand.
 The TWAS results will be stored in ~/MOTPEC/data/output/twas_rs.  
 
 ### step5: Performing DGE
-A linear regression equation after confonding factors adjusted is used to estimate the association between expression and BMI. MOTPEC does this on observed expression, predicted expression and baseline expression respectively. The script do_DGE.R is used to realize above work, and DGE results will be stored in ~/MOTPEC/data/output/b_beta.Rdata
+Linear regression while adjusting for covariates is used to estimate the association between expression and BMI. MOTPEC does this using observed expression, predicted expression, and baseline expression. The script do_DGE.R is used to realize the above work, and DGE results will be stored in ~/MOTPEC/data/output/b_beta.Rdata
 
 ## Tool: Predicting the tissue-specific expression of non-peripheral tissues
-The script get_predicted_expression.R is designed to get other tissues' expression by coefficents trained by us, which is executed by command line.
+The script get_predicted_expression.R is designed to get other tissues' expression using the trained models and is executed as a command line.
 ### Input
 - necessary
  1. Gene expression data (Note: expression matrix variable must be named "blood.exp" and be saved into "blood_exp.Rdata" and be placed into input dir!)
